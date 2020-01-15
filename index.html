@@ -51,56 +51,7 @@
   </div>
 </div>
 <script src="./ywords.js"></script>
-<script>
-window.yoodle = function() {
-    $('#usr').val($('#usr').val().replace(/y/g,"oodle"));
-}
-window.Yoodle = function() {
-    $('#usr').val($('#usr').val().replace(/Y/g,"Oodle"));
-}
-window.goodle = function() {
-    $('#usr').val($('#usr').val().replace(/a|e|i|o|u/g,"oodle"));
-}
-window.Goodle = function() {
-    $('#usr').val($('#usr').val().replace(/A|E|I|O|U/g,"Oodle"));
-}
-var originalValue;
-$('#oodle-form').on('reset', function(e) {
-    $('#usr').focus();
-});
-$( "#oodle-form" ).submit(function( event ) {
-    originalValue = $('#usr').val();
-    event.preventDefault();
-    window.goodle();
-    window.Goodle();
-    if(ywords.indexOf(originalValue.toLowerCase()) !== -1) {
-        window.yoodle();
-        window.Yoodle();
-    }
-});
-$(function(){
-    $('[data-toggle="tooltip"]').tooltip();
-    $('#usr').focus();
-});
-var getUrlParameter = function getUrlParameter(sParam) {
-    var sPageURL = decodeURIComponent(window.location.search.substring(1)),
-        sURLVariables = sPageURL.split('&'),
-        sParameterName,
-        i;
-
-    for (i = 0; i < sURLVariables.length; i++) {
-        sParameterName = sURLVariables[i].split('=');
-
-        if (sParameterName[0] === sParam) {
-            return sParameterName[1] === undefined ? true : sParameterName[1];
-        }
-    }
-};
-if(getUrlParameter('oodle') !== undefined) {
-    $('#usr').val(getUrlParameter('oodle'));
-    $( "#oodle-form" ).submit();
-}
-</script>
+<script src="./oodler.js"></script>
 
 </body>
 </html>

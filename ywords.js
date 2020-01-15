@@ -4,7 +4,7 @@
  *
  * Distributed under terms of the MIT license.
  */
-var ywords=[
+const ywords=[
     "by",
     "byrl",
     "byrls",
