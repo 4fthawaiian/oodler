@@ -1,21 +1,27 @@
 let originalValue;
-
+let replacement="oodle";
+const capitalized =
+    replacement.charAt(0).toUpperCase()
+    + replacement.slice(1)
 class OodleApp {
-    constructor(theElement) {
+    replacementString = "";
+    constructor(theElement, replacment="oodle") {
+        this.replacementString = replacment;
+        this.replacementStringCap = this.replacementString.charAt(0).toUpperCase() + this.replacementString.slice(1);
         this.theElement = theElement;
     }
 
     yoodle () {
-        $(this.theElement).val($(this.theElement).val().replace(/y/g, "oodle"));
+        $(this.theElement).val($(this.theElement).val().replace(/y/g, this.replacementString));
     }
     Yoodle () {
-        $(this.theElement).val($(this.theElement).val().replace(/Y/g, "Oodle"));
+        $(this.theElement).val($(this.theElement).val().replace(/Y/g, this.replacementStringCap));
     }
     goodle () {
-        $(this.theElement).val($(this.theElement).val().replace(/a|e|i|o|u/g, "oodle"));
+        $(this.theElement).val($(this.theElement).val().replace(/a|e|i|o|u/g, this.replacementString));
     }
     Goodle () {
-        $(this.theElement).val($(this.theElement).val().replace(/A|E|I|O|U/g, "Oodle"));
+        $(this.theElement).val($(this.theElement).val().replace(/A|E|I|O|U/g, this.replacementStringCap));
     }
 }
 
@@ -25,10 +31,11 @@ $('#oodle-form').on('reset', function(e) {
 $(function(){
     $('[data-toggle="tooltip"]').tooltip();
     $('#usr').focus();
-    myOodler = new OodleApp('#usr');
 });
 
 $( "#oodle-form" ).submit(function( event ) {
+    let replString = $('#selector').val();
+    myOodler = new OodleApp('#usr', replString);
     originalValue = $('#usr').val();
     event.preventDefault();
     myOodler.goodle();
